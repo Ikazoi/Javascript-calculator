@@ -15,7 +15,6 @@ main {
 
 .calc {
     box-shadow: 0px 0px 10px darkcyan;
-    max-width: 410px;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -84,42 +83,46 @@ main {
     grid-column-start: 4;
 }
 
-.keys ul li:hover {
-    animation-name: hoverAnimation;
-    animation-fill-mode: forwards;
-    animation-duration: 0.2s;
-}
-
-@keyframes hoverAnimation {
-    100% {
-        color: white;
-        background-color: cyan;
-    }
-}
-
-
 /*mobile*/
 
-@media (min-width: 0px) and (max-width: 480px)  {
+@media (min-width: 0px) and (max-width: 500px)  {
     .calc {
         width: 100vw;
         height: 100vh;
         border: 0px;
-        border-radius: 0%;
+        box-shadow: 0px 0px 0px;
+        border-radius: 0px;
     }
+
     .display {
-        padding-top: 8vh;
+        padding-top: 30%;
+    }
+
+    .keys ul li:active {
+        background-color: darkcyan;
     }
 }
 
 /*desktop*/
 
-@media (min-width: 481px) {
+@media (min-width: 501px) {
     main {
         background: linear-gradient(25deg, white, cyan);
     }
+
     .calc {
-        border-radius: 4vh;
+        max-width: 410px;
+        border-radius: 25px;
     }
+
+    .keys ul li:hover {
+        color: white;
+        background-color: cyan;
+    }
+
+    .keys ul li:active {
+        background-color: darkcyan;
+    }
+    
 }
 
