@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Orbitron&display=swap" rel="stylesheet">
+        <title>js calc</title>
+    </head>
+    <body>
+        <main>
+            <div class="calc">
+                <div class="display">
+                    <p id="displayedNumber">0</p>
+                </div>
+                <div class="keys">
+                    <ul>
+                        <li class="itemClear" onclick="clearDisplay()">C</li>
+                        <li class="itemPercent" onclick="modulo()">%</li>
+                        <li class="itemDivide" onclick="divide()">/</li>
+                        <li class="itemMultiply" onclick="multiply()">*</li>
+                        <li class="itemMinus" onclick="substract()">-</li>
+                        <li class="itemPlus" onclick="add()">+</li>
+                        <li class="itemEqual" onclick="result()">=</li>
+                        <li class="item7" onclick="changeNumber(7)">7</li>
+                        <li class="item8" onclick="changeNumber(8)">8</li>
+                        <li class="item9" onclick="changeNumber(9)">9</li>
+                        <li class="item4" onclick="changeNumber(4)">4</li>
+                        <li class="item5" onclick="changeNumber(5)">5</li>
+                        <li class="item6" onclick="changeNumber(6)">6</li>
+                        <li class="item1" onclick="changeNumber(1)">1</li>
+                        <li class="item2" onclick="changeNumber(2)">2</li>
+                        <li class="item3" onclick="changeNumber(3)">3</li>
+                        <li class="item0" onclick="changeNumber(0)">0</li>
+                        <li class="itemDot" onclick="fraction()">.</li> 
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <script>
+            var firstNumber = 0;
+            var mode;
+            var fractionModeOn = false;
+            var fractionLevel = 10;
+
+            function clearDisplay() {
+                fractionModeOn = false;
+                fractionLevel = 10;
+                document.getElementById("displayedNumber").innerHTML = 0;
+            }
+
+            function changeNumber(number) {
+                var displayedNumber = document.getElementById("displayedNumber").innerHTML;
+                if (displayedNumber.length < 9) {
+                    if(fractionModeOn == false){
+                        document.getElementById("displayedNumber").innerHTML = parseInt(displayedNumber * 10 + number);
+                    }
+                    else{
+                        document.getElementById("displayedNumber").innerHTML = parseFloat(displayedNumber) + (parseInt(number) / parseInt(fractionLevel));
+                        fractionLevel *= 10;
+                    }
+                }
+            }
+
+            function fraction() {
+                fractionModeOn = true;
+            }
+
+            function add(){
+                firstNumber = parseFloat(document.getElementById("displayedNumber").innerHTML);
+                mode = "+";
+                clearDisplay();
+            }
+
+            function substract() {
+                firstNumber = parseFloat(document.getElementById("displayedNumber").innerHTML * -1);
+                mode = "+";
+                clearDisplay();
+            }
+
+            function multiply() {
+                firstNumber = parseFloat(document.getElementById("displayedNumber").innerHTML);
+                mode = "*";
+                clearDisplay();
+            }
+
+            function divide() {
+                firstNumber = parseFloat(document.getElementById("displayedNumber").innerHTML);
+                mode = "/";
+                clearDisplay();
+            }
+
+            function modulo() {
+                firstNumber = parseFloat(document.getElementById("displayedNumber").innerHTML);
+                mode = "%";
+                clearDisplay();
+            }
+
+            function result() {
+                var secondNumber = parseFloat(document.getElementById("displayedNumber").innerHTML);
+                switch(mode) {
+                    case "+":
+                        document.getElementById("displayedNumber").innerHTML = firstNumber + secondNumber;
+                        break;
+                    case "-":
+                        document.getElementById("displayedNumber").innerHTML = firstNumber + secondNumber;
+                        break;
+                    case "*":
+                        document.getElementById("displayedNumber").innerHTML = firstNumber * secondNumber;
+                        break;
+                    case "/":
+                        document.getElementById("displayedNumber").innerHTML = firstNumber / secondNumber;
+                        break;
+                    case "%":
+                        document.getElementById("displayedNumber").innerHTML = firstNumber % secondNumber;
+                        break;
+                }
+            }
+
+        </script>
+    </body>
+</html>
