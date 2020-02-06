@@ -83,9 +83,27 @@ main {
     grid-column-start: 4;
 }
 
+main {
+    background: linear-gradient(25deg, white, cyan);
+}
+
+.calc {
+    max-width: 410px;
+    border-radius: 25px;
+}
+
+.keys ul li:hover {
+    color: white;
+    background-color: cyan;
+}
+
+.keys ul li:active {
+    background-color: darkcyan;
+}
+
 /*mobile*/
 
-@media (min-width: 0px) and (max-width: 500px)  {
+@media (pointer: none) {
     .calc {
         width: 100vw;
         height: 100vh;
@@ -101,28 +119,5 @@ main {
     .keys ul li:active {
         background-color: darkcyan;
     }
-}
-
-/*desktop*/
-
-@media (min-width: 501px) {
-    main {
-        background: linear-gradient(25deg, white, cyan);
-    }
-
-    .calc {
-        max-width: 410px;
-        border-radius: 25px;
-    }
-
-    .keys ul li:hover {
-        color: white;
-        background-color: cyan;
-    }
-
-    .keys ul li:active {
-        background-color: darkcyan;
-    }
-    
 }
 
